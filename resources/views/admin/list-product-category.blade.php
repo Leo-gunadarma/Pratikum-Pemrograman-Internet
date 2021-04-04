@@ -56,7 +56,7 @@ active
                         </a>
                         
                         {{-- TOMBOL DELETE --}}
-                        <button type="submit" name="submit" onclick="return confirm('Anda yakin ingin menghapus data ini?')"  class="btn btn-danger"> 
+                        <button type="submit" name="submit"  class="btn btn-danger delete-confirm"> 
                             <i class="fas fa-trash"></i> Delete
                         </button>
                 </form>
@@ -88,7 +88,44 @@ active
     <script>
     $(document).ready(function () {
         $('#dataTable').DataTable();
+        $('.delete-confirm').on('click', function (event) {
+            event.preventDefault();
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                    )
+                }
+            })
+        });
     });
-
 </script>
+<!-- <script>
+    $(document).ready(function(){
+$('.delete-confirm').on('click', function (event) {
+    event.preventDefault();
+    const url = $(this).attr('href');
+    swal({
+        title: 'Are you sure?',
+        text: 'This record and it`s details will be permanantly deleted!',
+        icon: 'warning',
+        buttons: ["Cancel", "Yes!"],
+    }).then(function(value) {
+        if (value) {
+            window.location.href = url;
+        }
+    });
+});
+    });
+</script> -->
 @endsection
