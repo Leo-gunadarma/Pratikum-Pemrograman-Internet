@@ -5,9 +5,12 @@ Link github dekstop (https://desktop.github.com/).
 
 - Langkah pertama setelah melakukan clone
 Lakukan perintah composer update di directory tempat kalian cloning repo nya
-``` composer update ```
-- Langkah kedua adalah copy paste file env.example dan merubah nya menjadi env saja, kemudian buat key dengan perintah php artisan generate:key
+``` 
+composer update 
+```
+- Langkah kedua adalah copy paste file env.example dan merubah nya menjadi env saja (jadinya kita punya 2 file yaitu .env dan .env.example), kemudian buat key dengan perintah php artisan key:generate
 ```
 .env
-php artisan generate:key
+php artisan key:generate
 ```
+- Langkah ketiga adalah lakukan konfigurasi database
