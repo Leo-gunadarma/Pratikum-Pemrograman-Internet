@@ -36,3 +36,4 @@ Route::middleware('admin:admin')->group(function(){
   Route::get('admin/logout', 'Auth\AdminAuthController@postLogout');
 });
 
+Route::get('/user', 'UserController@index');
