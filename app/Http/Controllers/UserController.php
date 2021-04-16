@@ -9,7 +9,20 @@ use App\Product;
 class UserController extends Controller
 {
     public function index(){
+        //Menampilkan halaman depan dan 3 produk terbaru
         $products= Product::with('RelasiProductCategory','RelasiProductImage')->orderBy('id','desc')->take(3)->get();
         return view ('user.index',compact(['products']));
+    }
+
+    public function showAll(){
+        //Menampilkan semua produk yang ada
+        $products= Product::with('RelasiProductCategory','RelasiProductImage')->get();
+        return view ('user.show_all',compact(['products']));
+    }
+
+    public function detail($id){
+        //Menampilkan produk yang dipilih
+        $product= Product::with('RelasiProductCategory','RelasiProductImage')->where('id',$id)->first();
+        return view ('user.detail',compact(['product']));
     }
 }

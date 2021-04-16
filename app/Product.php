@@ -8,6 +8,7 @@ class Product extends Model
 {
     //Nama Tabel yang digunakan di SQL
     protected $table ='products';
+    public $timestamps = false;
     //Relasi Many to Many dengan tabel product category
     public function RelasiProductCategory()
     {

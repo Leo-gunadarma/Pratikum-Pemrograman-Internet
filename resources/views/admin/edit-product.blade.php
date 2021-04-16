@@ -83,20 +83,8 @@ active
             </div>
 
 
-            <div class="form-group row">
-                <label class="col-sm-2 col-form-label">
-                    <h6 class="font-weight-bold text-primary">Gambar Product</h6>
-                </label>
-                <div class="col-sm-10">
-                    <input name="gambar_product" id="gambar_product" type="file" class="" <span class="error text-danger">
-                    <p id="error_gambar_product"></p>
-                    </span>
-                </div>
-            </div>
-
-
             <div class="float-right">
-                <a href="/product" class="btn btn-info ">
+                <a href="/product/{{$product->id}}" class="btn btn-info ">
                     <i class="fas fa-arrow-left"></i>
                     Kembali
                 </a>

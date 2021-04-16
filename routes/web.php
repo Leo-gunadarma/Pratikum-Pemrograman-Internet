@@ -33,7 +33,11 @@ Route::middleware('admin:admin')->group(function(){
   Route::resource('/product','ControllerProduct');
   Route::resource('/product-category','ControllerProductCategory');
   Route::resource('/courier','ControllerCourier');
+  Route::get('/gambar/{id}','ControllerProduct@editGambar');
+  Route::match(['put', 'patch'],'/gambar/{id}/update', 'ControllerProduct@updateGambar');
   Route::get('admin/logout', 'Auth\AdminAuthController@postLogout');
 });
 
 Route::get('/user', 'UserController@index');
+Route::get('/user/show','UserController@showAll');
+Route::get('/user/detail/{id}','UserController@detail');

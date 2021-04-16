@@ -67,7 +67,7 @@ class ControllerProduct extends Controller
         //Menyimpan nama gambar dan menaruh file gambar di public
         if($request->hasFile('gambar_product')){
             foreach ($request->file('gambar_product') as $gambar){
-                 $productImage = new ProductImage;
+                $productImage = new ProductImage;
                 $productImage->product_id = $products->id; 
                 $name= $gambar->getClientOriginalName();
                 if (ProductImage::where('image_name',$name)->exists()){
@@ -82,12 +82,15 @@ class ControllerProduct extends Controller
         }
 
         //Menyimpan id product dan kategori product pada detail product
-        $productCategoryDetail = new ProductCategoryDetail;
-        $productCategoryDetail->product_id = $products->id;
-        $productCategoryDetail->category_id = $request->kategori_product;
-        $productCategoryDetail->created_at = Carbon::now()->format('Y-m-d H:i:s');
-        $productCategoryDetail->updated_at = Carbon::now()->format('Y-m-d H:i:s');
-        $productCategoryDetail->save();
+        
+        foreach ($request->kategori as $row){
+            $productCategoryDetail = new ProductCategoryDetail;
+            $productCategoryDetail->product_id = $products->id;
+            $productCategoryDetail->category_id = $row;
+            $productCategoryDetail->created_at = Carbon::now()->format('Y-m-d H:i:s');
+            $productCategoryDetail->updated_at = Carbon::now()->format('Y-m-d H:i:s');
+            $productCategoryDetail->save();
+        }
         return redirect('/product')->with('berhasil','Anda Berhasil menambahkan data product');
 
         
@@ -101,7 +104,8 @@ class ControllerProduct extends Controller
      */
     public function show($id)
     {
-        //
+        $product = Product::with('RelasiProductCategory','RelasiProductImage')->where('id',$id)->first(); 
+        return view ('admin.detail-product',compact (['product']));
     }
 
     /**
@@ -153,5 +157,26 @@ class ControllerProduct extends Controller
         $product=Product::find($id);
         $product->delete();
         return redirect('/product')->with('berhasil','Data Barang Berhasil Dihapus');
+    }
+
+    public function editGambar($id)
+    {
+        //Menampilkan tampilan edit gambar
+        $images = ProductImage::where('product_id',$id)->get(); 
+        return view ('admin.edit-gambar',compact(['images']));
+    }
+
+    public function updateGambar(Request $request,$id)
+    {
+        //Menampilkan tampilan edit gambar
+        $name= $request->gambar_product->getClientOriginalName();
+        if (ProductImage::where('image_name',$name)->exists()){
+            $name = uniqid().'-'.$name;
+        };
+        $request->gambar_product->move('img',$name);
+        ProductImage::where('id',$id)->update([
+            'image_name'=>$name   
+        ]);
+        return redirect('/gambar/'.$id);
     }
 }
