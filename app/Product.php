@@ -13,6 +13,7 @@ class Product extends Model
     protected $table ='products';
     public $timestamps = false;
 
+    //column yang digunakan untuk soft delete
     protected $dates = ['deleted_at'];
 
     //Relasi Many to Many dengan tabel product category

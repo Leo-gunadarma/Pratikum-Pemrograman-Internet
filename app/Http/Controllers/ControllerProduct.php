@@ -159,12 +159,45 @@ class ControllerProduct extends Controller
         return redirect('/product')->with('berhasil','Data Barang Berhasil Dihapus');
     }
 
+
     //menampilkan data product yang sudah dihapus
     public function trash()
     {
-        //mengambil data guru yang sudah dihapus
-        $product_trash = Product::onlyTrashed()->get();
-        return view('admin.product-trash', compact(['product_trash']));
+        //mengambil data product yang sudah dihapus
+        $product = Product::onlyTrashed()->get();
+        return view('admin.product-trash', compact(['product']));
+    }
+
+    public function restore($id)
+    {
+        $product = Product::onlyTrashed()->where('id',$id);
+        $product->restore();
+
+        return redirect('/product');
+    }
+
+    public function restore_all()
+    {
+        $product = Product::onlyTrashed();
+        $product->restore();
+
+        return redirect('/product')->with('berhasil', 'Data Berhasil Dikembalikan !');
+    }
+
+    public function hapus($id)
+    {
+        $product = Product::onlyTrashed()->where('id',$id);
+        $product->forceDelete();
+
+        return redirect('/product-trash')->with('berhasil', 'Data Berhasil Dihapus !');
+    }
+
+    public function hapus_semua()
+    {
+        $product = Product::onlyTrashed();
+        $product->forceDelete();
+
+        return redirect('product-trash');
     }
 
     public function editGambar($id)

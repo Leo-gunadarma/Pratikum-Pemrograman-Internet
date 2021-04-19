@@ -61,18 +61,28 @@ active
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($product_trash as $prd)
+                    @foreach ($product as $prd)
                     <tr>
                         <td>{{$loop->iteration}}</td>
                         <td>{{$prd->product_name}}</td>
                         <td>Ini Rate</td>
                         <td>{{ $prd->deleted_at }}</td>
                         <td class="text-center">
-                                <button type="submit" name="submit"
+
+                            {{-- TOMBOL Restore --}}
+                                <a href="{{ url('/product-restore/'.$prd->id) }}" class="btn btn-success">
+                                    <i class="fas fa-plus"></i> Restore
+                                </a>
+
+                            {{-- TOMBOL DELETE --}}
+                                <a href="{{ url('/product-hapus_permanen/'.$prd->id) }}" type="submit" name="submit"
                                     onclick="return confirm('Anda yakin ingin menghapus data ini?')"
                                     class="btn btn-danger">
-                                    <i class="fas fa-trash"></i> Delete
-                                </button>
+                                    <i class="fas fa-trash"></i> Delete Permanen
+                                </a>
+
+                                
+
                         </td>
                     </tr>
                     @endforeach
@@ -80,6 +90,22 @@ active
             </table>
 
         </div>
+
+        <div style="padding-left: 1326px;">
+            <a href="{{ url('/product-restore-all') }}" class="btn btn-success btn-icon-split">
+            <span class="icon text-white-50">
+                <i class="fas fa-plus-square"></i>
+            </span>
+            <span class="text">Restore All</span>
+        </a>
+        <a href="{{ url('/product-hapus_permanen') }}" class="btn btn-danger btn-icon-split">
+            <span class="icon text-white-50">
+                <i class="fas fa-trash"></i>
+            </span>
+            <span class="text">Delete All</span>
+        </a>
+        </div>
+        
 
     </div>
 

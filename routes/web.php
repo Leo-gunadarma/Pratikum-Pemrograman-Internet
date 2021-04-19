@@ -29,11 +29,28 @@ Route::middleware('admin:admin')->group(function(){
   	return view('auth.dashboard_admin');
     
   });
-  //List Route yang digunakan untuk CRUD Admin
+
+
+//List Route yang digunakan untuk CRUD Admin
   Route::resource('/product','ControllerProduct');
-  Route::get('/trash','ControllerProduct@trash');
+
+  //--Route Untuk Soft Delete pada Admin Product--//
+    //route get all data trash product
+    Route::get('/product-trash','ControllerProduct@trash');
+    //route restore product
+    Route::get('/product-restore/{id}', 'ControllerProduct@restore');
+    Route::get('/product-restore-all', 'ControllerProduct@restore_all');
+    //route hapus permanen
+    Route::get('/product-hapus_permanen/{id}', 'ControllerProduct@hapus');
+    Route::get('/product-hapus_permanen', 'ControllerProduct@hapus_semua');
+  //-- End Route Untuk Soft Delete pada Admin Product --//
 
   Route::resource('/product-category','ControllerProductCategory');
+
+    //--Route untuk soft delete admin product category--//
+
+    //-- End Route untuk soft delete admin product category --//
+  
   Route::resource('/courier','ControllerCourier');
   Route::get('/gambar/{id}','ControllerProduct@editGambar');
   Route::match(['put', 'patch'],'/gambar/{id}/update', 'ControllerProduct@updateGambar');

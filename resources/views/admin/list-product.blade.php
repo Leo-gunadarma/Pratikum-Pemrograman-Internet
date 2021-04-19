@@ -94,11 +94,11 @@ active
             </span>
             <span class="text">Tambah Data</span>
         </a>
-        <a href="{{ url('/trash') }}" class="btn btn-warning btn-icon-split">
+        <a href="{{ url('/product-trash') }}" class="btn btn-danger btn-icon-split">
             <span class="icon text-white-50">
                 <i class="fas fa-trash"></i>
             </span>
-            <span class="text">Trash Data</span>
+            <span class="text">DataTrash</span>
         </a>
     </div>
 
