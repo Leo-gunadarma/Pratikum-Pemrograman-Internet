@@ -31,6 +31,8 @@ Route::middleware('admin:admin')->group(function(){
   });
   //List Route yang digunakan untuk CRUD Admin
   Route::resource('/product','ControllerProduct');
+  Route::get('/trash','ControllerProduct@trash');
+
   Route::resource('/product-category','ControllerProductCategory');
   Route::resource('/courier','ControllerCourier');
   Route::get('/gambar/{id}','ControllerProduct@editGambar');

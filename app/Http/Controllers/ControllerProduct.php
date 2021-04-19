@@ -151,12 +151,20 @@ class ControllerProduct extends Controller
     public function destroy($id)
     {
         //Memberikan peringatan jika data tidak dapat dihapus
-        if(ProductImage::where('product_id',$id)->exists()){
-            return redirect('/product')->with('gagal','Data Tidak dapat dihapus karenakan terdapat data yang bersangkutan');
-        }   
+        // if(ProductImage::where('product_id',$id)->exists()){
+        //     return redirect('/product')->with('gagal','Data Tidak dapat dihapus karenakan terdapat data yang bersangkutan');
+        // }
         $product=Product::find($id);
         $product->delete();
         return redirect('/product')->with('berhasil','Data Barang Berhasil Dihapus');
+    }
+
+    //menampilkan data product yang sudah dihapus
+    public function trash()
+    {
+        //mengambil data guru yang sudah dihapus
+        $product_trash = Product::onlyTrashed()->get();
+        return view('admin.product-trash', compact(['product_trash']));
     }
 
     public function editGambar($id)
