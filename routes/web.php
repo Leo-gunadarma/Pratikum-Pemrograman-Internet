@@ -60,3 +60,10 @@ Route::middleware('admin:admin')->group(function(){
 Route::get('/user', 'UserController@index');
 Route::get('/user/show','UserController@showAll');
 Route::get('/user/detail/{id}','UserController@detail');
+
+Route::get('user/logout', 'UserController@logout');
+  
+Route::middleware('auth')->group(function(){
+  Route::get('/user/transaksi-langsung/{id}','UserController@transaksiLangsung');  
+});
+

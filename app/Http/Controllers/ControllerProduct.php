@@ -118,7 +118,9 @@ class ControllerProduct extends Controller
     {
         //Menampilkan tampilan edit
         $product=Product::where('id',$id)->first(); 
-        return view ('admin.edit-product',compact(['product']));
+        $productCategorys = ProductCategory::all();
+        $productCategoryDetail = ProductCategoryDetail::where('product_id',$id)->pluck('category_id')->toArray();
+        return view ('admin.edit-product',compact(['product','productCategorys','productCategoryDetail']));
     }
 
     /**
@@ -139,6 +141,15 @@ class ControllerProduct extends Controller
                     'weight'=>$request->berat_product,
                     'updated_at'=>Carbon::now()->format('Y-m-d H:i:s')
                 ]);
+        ProductCategoryDetail::where ('product_id', $id)->delete();
+        foreach ($request->kategori as $row){
+            $productCategoryDetail = new ProductCategoryDetail;
+            $productCategoryDetail->product_id = $id;
+            $productCategoryDetail->category_id = $row;
+            $productCategoryDetail->created_at = Carbon::now()->format('Y-m-d H:i:s');
+            $productCategoryDetail->updated_at = Carbon::now()->format('Y-m-d H:i:s');
+            $productCategoryDetail->save();
+        }
         return redirect('/product')->with('berhasil','Data Product Berhasil dirubah');
     }
 

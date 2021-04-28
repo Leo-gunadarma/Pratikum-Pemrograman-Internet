@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 use App\Product;
 
@@ -24,5 +25,15 @@ class UserController extends Controller
         //Menampilkan produk yang dipilih
         $product= Product::with('RelasiProductCategory','RelasiProductImage')->where('id',$id)->first();
         return view ('user.detail',compact(['product']));
+    }
+
+    public function logout(Request $request){
+        // $request->session()->flush();
+        Auth::logout();
+        return redirect('/user');
+    }
+    public function transaksiLangsung($id){
+        $product= Product::with('RelasiProductCategory','RelasiProductImage')->where('id',$id)->first();
+        return view ('user.transaksi-langsung',compact(['product']));
     }
 }

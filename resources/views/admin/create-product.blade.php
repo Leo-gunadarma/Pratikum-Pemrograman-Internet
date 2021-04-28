@@ -93,15 +93,6 @@ active
                     <span class="error text-danger">
                         <h6 id="kategori_product_error"></h6>
                     </span>
-
-
-
-
-
-
-
-
-
                 </div>
             </div>
 
