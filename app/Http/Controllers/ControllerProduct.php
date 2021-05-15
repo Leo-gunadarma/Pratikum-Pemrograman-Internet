@@ -153,6 +153,7 @@ class ControllerProduct extends Controller
         return redirect('/product')->with('berhasil','Data Product Berhasil dirubah');
     }
 
+
     /**
      * Remove the specified resource from storage.
      *

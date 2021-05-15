@@ -70,6 +70,11 @@ active
                                     <i class="fas fa-eye"></i> Detail
                                 </a>
 
+                                {{-- TOMBOL DISKON --}}
+                                <a href="/discount/{{$product->id}}" class="btn btn-warning">
+                                    <i class="fas fa-price"></i> Diskon
+                                </a>
+
                                 {{-- TOMBOL DELETE --}}
                                 <button type="submit" name="submit"
                                     onclick="return confirm('Anda yakin ingin menghapus data ini?')"

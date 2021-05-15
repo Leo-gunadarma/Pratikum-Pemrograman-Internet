@@ -45,6 +45,15 @@ Route::middleware('admin:admin')->group(function(){
     Route::get('/product-hapus_permanen', 'ControllerProduct@hapus_semua');
   //-- End Route Untuk Soft Delete pada Admin Product --//
 
+  //--Route untuk diskon--//
+
+    Route::get('/discount/{id}','ControllerDiscount@discount');
+    Route::post('/discount-store','ControllerDiscount@store');
+    Route::put('/discount-update/{id}','ControllerDiscount@update');
+    Route::get('/discount-delete/{id}','ControllerDiscount@delete');
+    
+  //--End route untuk diskon--//
+
   Route::resource('/product-category','ControllerProductCategory');
 
     //--Route untuk soft delete admin product category--//
