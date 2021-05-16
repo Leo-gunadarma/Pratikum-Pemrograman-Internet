@@ -103,6 +103,7 @@ CREATE TABLE `discounts` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `id_product` int(10) unsigned DEFAULT NULL,
   `percentage` int(3) DEFAULT NULL,
+  `discount_price` int(11) DEFAULT NULL,
   `start` date DEFAULT NULL,
   `end` date DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -110,9 +111,23 @@ CREATE TABLE `discounts` (
   PRIMARY KEY (`id`),
   KEY `id_product` (`id_product`),
   CONSTRAINT `discounts_ibfk_1` FOREIGN KEY (`id_product`) REFERENCES `products` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 /*Data for the table `discounts` */
+insert  into `discounts`(`id`,`id_product`,`percentage`,`discount_price`,`start`,`end`,`created_at`,`updated_at`) values 
+(1,1,10,2429100,'2021-05-06','2021-05-07',NULL,'2021-05-15 06:15:50'),
+(11,2,10,3599100,'2021-05-15','2021-05-15','2021-05-15 07:12:13','2021-05-15 07:12:25');
+
+/*Table structure for table `log` */
+
+DROP TABLE IF EXISTS `log`;
+
+CREATE TABLE `log` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `log` varchar(100) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4;
 
 /*Table structure for table `failed_jobs` */
 
