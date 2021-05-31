@@ -30,7 +30,7 @@ class UserController extends Controller
     public function logout(Request $request){
         // $request->session()->flush();
         Auth::logout();
-        return redirect('/user');
+        return redirect('/');
     }
     public function transaksiLangsung($id){
         $product= Product::with('RelasiProductCategory','RelasiProductImage')->where('id',$id)->first();

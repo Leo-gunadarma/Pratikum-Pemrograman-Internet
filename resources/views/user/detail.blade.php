@@ -1,50 +1,93 @@
-@extends('template.user-layout')
-@section('konten')
-     <!-- CONTENT =============================-->
-    <section class="item content">
-        <div class="container toparea">
-            <div class="underlined-title">
-                <div class="wow-hr type_short">
-                    <span class="wow-hr-h">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                    </span>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12 col-md-4 col-lg-4">
-                    <div class="card shadow mb-4">
-                        <div class="card-body">
-                            <div class="card-body">
-                                @foreach ($product->RelasiProductImage as $gambar)
-                                @if ($loop->iteration == 1)
-                                <img src="{{asset('img/'.$gambar->image_name)}}" alt="" width="200" height="200"></span>
-                                @endif
-                                @endforeach
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-8 col-lg-8">
-                    <div class="card shadow mb-4">
-                        <div class="card-body">
-                            <p class="text-primary font-weight-bold h2 ">{{$product->product_name}}</p>
-                            <p class="text-success h4">Rp.{{number_format($product->price)}}</p>
-                            <hr style="border-top: thin solid #000000;width:50%; text-align:left;margin-left:0">
+@extends('layouts.master')
 
-                            <p>Deskripsi : {{$product->description}}</p>
-                            <p>Berat : {{$product->weight}}</p>
-                        </div>
-                    </div>
+@section('content')
+
+<div class="span9">
+    <ul class="breadcrumb">
+    <li><a href="index.html">Home</a> <span class="divider">/</span></li>
+    <li><a href="products.html">Products</a> <span class="divider">/</span></li>
+    <li class="active">Product Details</li>
+    </ul>   
+    <div class="row">     
+            <div id="gallery" class="span3">
+                <?php
+                    $gambar = \DB::table('base64')->where('product_id', $product->id)->value('nama');
+                    $photo = base64_decode($gambar);
+                ?>
+            <a href="themes/images/products/large/f1.jpg" title="{{ $product->product_name }}">
+                <img src="{{ $photo }}" style="width:100%" alt="{{ $product->product_name }}"/>
+            </a>
+            <div id="differentview" class="moreOptopm carousel slide">
+                <div class="carousel-inner">
+                  <div class="item active">
+                   <a href="themes/images/products/large/f1.jpg"> <img style="width:29%" src="themes/images/products/large/f1.jpg" alt=""/></a>
+                   <a href="themes/images/products/large/f2.jpg"> <img style="width:29%" src="themes/images/products/large/f2.jpg" alt=""/></a>
+                   <a href="themes/images/products/large/f3.jpg" > <img style="width:29%" src="themes/images/products/large/f3.jpg" alt=""/></a>
+                  </div>
+                  <div class="item">
+                   <a href="themes/images/products/large/f3.jpg" > <img style="width:29%" src="themes/images/products/large/f3.jpg" alt=""/></a>
+                   <a href="themes/images/products/large/f1.jpg"> <img style="width:29%" src="themes/images/products/large/f1.jpg" alt=""/></a>
+                   <a href="themes/images/products/large/f2.jpg"> <img style="width:29%" src="themes/images/products/large/f2.jpg" alt=""/></a>
+                  </div>
                 </div>
+              <!--  
+              <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
+              <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a> 
+              -->
+              </div>
+              
+             <div class="btn-toolbar">
+              <div class="btn-group">
+                <span class="btn"><i class="icon-envelope"></i></span>
+                <span class="btn" ><i class="icon-print"></i></span>
+                <span class="btn" ><i class="icon-zoom-in"></i></span>
+                <span class="btn" ><i class="icon-star"></i></span>
+                <span class="btn" ><i class=" icon-thumbs-up"></i></span>
+                <span class="btn" ><i class="icon-thumbs-down"></i></span>
+              </div>
+            </div>
+            </div>
+            <div class="span6">
+                <h3>{{ $product->product_name }}  </h3>
+                <hr class="soft"/>
+                <form class="form-horizontal qtyFrm">
+                  <div class="control-group">
+                    <label class="control-label"><span>Rp. {{ number_format($product->price, 0) }}</span></label>
+                    <div class="controls">
+                      <a href="{{ url('add-to-cart/'.$product->id) }}" class="btn btn-large btn-primary pull-right"> Add to cart <i class=" icon-shopping-cart"></i></a>
+                    </div>
+                  </div>
+                </form>
+                {!! $product->description !!}
+                <br class="clr"/>
+            <a href="#" name="detail"></a>
+            <hr class="soft"/>
+            </div>
+            
+            
+            <hr class="soft"/>
             </div>
         </div>
+                <br class="clr">
+                     </div>
         </div>
-        </div>
-    </section>
+          </div>
 
-  
+    </div>
+</div>
+
 @endsection
 
- 
+@section('scripts')
+    
+    <script>
+        $(document).ready(function(){
+            var flash = "{{ Session::has('pesan') }}";
+            if(flash){
+                var pesan = "{{ Session::get('pesan') }}";
+                swal('success', pesan, 'success');
+            }
+        });
+    </script>
+
+@endsection

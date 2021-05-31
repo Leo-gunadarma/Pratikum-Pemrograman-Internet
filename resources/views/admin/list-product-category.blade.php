@@ -1,6 +1,6 @@
 @extends('template.admin-layout')
 @section('css')
-    <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet"
+    <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet">
 @endsection
 @section('product-active')
 active

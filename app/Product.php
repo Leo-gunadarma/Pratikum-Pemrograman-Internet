@@ -11,6 +11,7 @@ class Product extends Model
 
     //Nama Tabel yang digunakan di SQL
     protected $table ='products';
+    public $primaryKey = 'id';
     public $timestamps = false;
 
     //column yang digunakan untuk soft delete
@@ -24,6 +25,21 @@ class Product extends Model
     //Relasi One to Many dengan tabel product Image
     public function RelasiProductImage (){
         return $this->hasMany(ProductImage::class);
+    }
+
+    public function kategori()
+    {
+        return $this->belongsTo('App\Kategori', 'category_id', 'id');
+    }
+
+    public function gambar()
+    {
+        return $this->hasOne('App\Photo', 'barang_id', 'id');
+    }
+
+    public function statuss()
+    {
+        return $this->belongsTo('App\Status', 'status_id', 'id');
     }
     
 }

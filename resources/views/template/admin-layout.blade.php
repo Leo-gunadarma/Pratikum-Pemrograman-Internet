@@ -85,6 +85,18 @@
                     <span>Courier</span></a>
             </li>
 
+            <li class="nav-item @yield('courier-active')">
+                <a class="nav-link" href="/konfirmasi-admin">
+                    <i class="fas fa-book"></i>
+                    <span>Konfirmasi Pembayaran</span></a>
+            </li>
+
+            <li class="nav-item @yield('courier-active')">
+                <a class="nav-link" href="/pesanan">
+                    <i class="fas fa-book"></i>
+                    <span>List Semua Pesanan</span></a>
+            </li>
+
             <!-- Divider -->
             <hr class="sidebar-divider">
 
