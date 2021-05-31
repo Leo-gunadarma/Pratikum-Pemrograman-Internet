@@ -4,7 +4,7 @@
 	<span class="icon-bar"></span>
 </a>
   <div class="navbar-inner">
-    <a class="brand" href="{{url('/')}}"><img src="{{asset('bootshop/themes/images/logo.png')}}" alt="Bootsshop"/></a>
+    <a class="brand" href="{{url('/')}}"><img src="{{asset('bootshop/themes/images/PhoneShop.png')}}" alt="Bootsshop"/></a>
 		
     @if(Auth::guest())
     <ul id="topMenu" class="nav pull-right">
