@@ -36,6 +36,8 @@
 
     <li class=""><a href="{{ url('invoice/list') }}">{{ Auth::user()->name }} Invoices</a></li>
     <li class=""><a href="{{ url('konfirmasi') }}">Konfirmasi Pembayaran</a></li>
+    <li class=""><a href="{{ url('/') }}"> Hubungi Kami</a></li>
+
 	    <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();" role="button" data-toggle="modal" style="padding-right:0"><span class="btn btn-large btn-success">Logout</span></a>

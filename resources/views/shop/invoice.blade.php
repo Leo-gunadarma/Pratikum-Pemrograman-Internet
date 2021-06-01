@@ -31,7 +31,7 @@
 		</tr>
 		<tr>
 			<th colspan="1">Transfer Ke :</th>
-			<td colspan="2">BCA : Atas Nama <b><i>Bulir Jeruk</i></b><br>No. Rekening <b><i>123456789</i></b></td>
+			<td colspan="2">BCA : Atas Nama <b><i>Putu Gede</i></b><br>No. Rekening <b><i>1245789</i></b></td>
 		</tr>
 	</tbody>
 </table>

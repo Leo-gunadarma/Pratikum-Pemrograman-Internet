@@ -43,4 +43,6 @@ class BerandaController extends Controller
 
         return view('welcome', compact('products'));
     }
+
+    
 }
