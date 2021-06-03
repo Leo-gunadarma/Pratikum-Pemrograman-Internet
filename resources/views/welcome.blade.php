@@ -11,10 +11,15 @@
         <?php
             $gambar = \DB::table('base64')->where('product_id', $product->id)->value('nama');
             $photo = base64_decode($gambar);
+            $category = \DB::table('product_categories')->where('id', $product->category_id)->value('category_name');
+            $foto = \DB::table('product_images')->where('id', $product->product_images_id)->value('image_name');
         ?>
-        <a  href="{{ url('product/detail/'.$product->id) }}"><img style="height: 200px;" src="{{ $photo }}" alt=""/></a>
+        <a  href="{{ url('product/detail/'.$product->id) }}"><img style="height: 200px;" src="{{ asset('$foto') }}" alt=""/></a>
         <div class="caption">
           <h5>{{ $product->product_name }}</h5>
+          <p>
+            {{ $category }}
+          </p>
          
           <h4 style="text-align:center"><a class="btn" href="{{ url('product/detail/'.$product->id) }}"> <i class="icon-zoom-in"></i></a> <a class="btn" href="{{ url('/add-to-cart/'.$product->id) }}">Add to <i class="icon-shopping-cart"></i></a>
             <div>

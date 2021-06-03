@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Session;
 
 use App\Product;
+use App\ProductCategory;
 use Cart;
 
 class BerandaController extends Controller
