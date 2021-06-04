@@ -7,6 +7,12 @@ use Carbon\Carbon;
 //List Model Yang digunakan
 use App\Product;
 use App\Discount;
+use App\User;
+use App\Notifications\userNotif;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
 
 class ControllerDiscount extends Controller
 {
@@ -41,7 +47,9 @@ class ControllerDiscount extends Controller
         $discounts->created_at = Carbon::now()->format('Y-m-d H:i:s');
         $discounts->updated_at = Carbon::now()->format('Y-m-d H:i:s');
         $discounts->save();
-
+        $user = User::all();
+        $notif = "Ada diskon terbaru yang mulai dari $request->start hingga $request->end";
+        Notification::send($user, new userNotif($notif));
         return redirect('/product')->with('berhasil','Anda Berhasil menambahkan data diskon');
   
     }

@@ -34,15 +34,6 @@ Route::get('/shopping-cart/update/{id}', 'CartController@tambahkan');
 //Kurangi qty item di keranjang
 Route::get('/shopping-cart/kurangi/{id}', 'CartController@kurangi');
 
-
-
-
-
-
-
-
-
-
 Auth::routes(['verify' => true, 'guest']);
 
 Route::get('/home', 'HomeController@index')->name('home');
