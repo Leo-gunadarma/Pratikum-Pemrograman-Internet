@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Auth;
 use Session;
-
 use App\User;
 use App\Konfirmasi;
 use App\Pesanan;
+use App\Notifications\userNotif;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
 
 class KonfirmasiAdmController extends Controller
 {
@@ -48,10 +51,11 @@ class KonfirmasiAdmController extends Controller
     {
         $pesanan = Pesanan::where('id', $pesanan_id)->first();
         $pesanan->status_invoice_id = 3;
+        $user = User::find($pesanan->users_id);
         $pesanan->save();
-
+        $notif = "Pesanan dengan ID => $pesanan_id sudah diterima dan segera diproses";
+        Notification::send($user, new userNotif($notif));
         Session::flash('pesan', 'Berhasil di konfirmasi');
-
         return redirect('konfirmasi-admin');
     }
 
@@ -59,10 +63,11 @@ class KonfirmasiAdmController extends Controller
     {
         $pesanan = Pesanan::where('id', $pesanan_id)->first();
         $pesanan->status_invoice_id = 4;
+        $user = User::find($pesanan->users_id);
         $pesanan->save();
-
+        $notif = "Pesanan dengan ID => $pesanan_id ditolak. Mohon untuk menghubungi administrasi untuk info lebih lanjut";
+        Notification::send($user, new userNotif($notif));
         Session::flash('pesan', 'Berhasil di konfirmasi');
-
         return redirect('konfirmasi-admin');
     }
 

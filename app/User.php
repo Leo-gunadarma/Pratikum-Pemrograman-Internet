@@ -36,4 +36,13 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function notifications()
+    {
+        return $this->morphMany(user_notification::class, 'notifiable')->orderBy('created_at', 'desc');
+    }
+
+    public function unreadNotifications()
+    {
+        return $this->morphMany(user_notification::class, 'notifiable')->where('read_at',null)->orderBy('created_at', 'desc');
+    }
 }
