@@ -18,7 +18,7 @@
   		$gambar = \DB::table('base64')->where('product_id', $product->id)->value('nama');
   		$photo = base64_decode($gambar);
   	?>
-	<img style="height: 200px;" src="{{ $photo }}" alt="PhoneShop Best New Phone"/>
+	<img style="height: 200px;" src="{{ asset('image/bridge bg.jpg') }}" alt="PhoneShop Best New Phone"/>
 	<div class="caption">
 	  <h5>{{ $product->product_name }}</h5>
 		<h4 style="text-align:center"><a class="btn" href="{{ url('product/detail/'.$product->id) }}"> <i class="icon-zoom-in"></i></a> <a class="btn" href="{{ url('add-to-cart/'.$product->id) }}">Add to <i class="icon-shopping-cart"></i></a>

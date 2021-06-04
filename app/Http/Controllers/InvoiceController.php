@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Cart;
+use Session;
 use Auth;
 
 use App\Pesanan;
@@ -52,13 +53,10 @@ class InvoiceController extends Controller
 
     public function delete($id)
     {
-        try {
-            Pesanan::where('id',$id)->delete();
-            Session::flash('pesan', 'Pesanan Berhasil Dibatalkan');
-        } catch (Exception $e) {
-            Session::flash('gagal',$e->getMessage());
-        }
+        Pesanan::find($id)->delete();
+        Session::flash('pesan', 'Pesanan Berhasil Dibatalkan !!!');
 
-        return redirect('/invoice/list');
+
+        return redirect()->back();
     }
 }

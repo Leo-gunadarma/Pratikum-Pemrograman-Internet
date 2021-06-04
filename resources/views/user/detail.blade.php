@@ -16,7 +16,7 @@
                     $foto = \DB::table('product_images')->where('id', $product->product_images_id)->value('image_name');
                 ?>
             <a href="themes/images/products/large/f1.jpg" title="{{ $product->product_name }}">
-                <img src="{{ asset($foto) }}" style="width:100%" alt="{{ $product->product_name }}"/>
+                <img src="{{ asset('image/bridge bg.jpg') }}" style="width:100%" alt="{{ $product->product_name }}"/>
             </a>
             <div id="differentview" class="moreOptopm carousel slide">
                 <div class="carousel-inner">
