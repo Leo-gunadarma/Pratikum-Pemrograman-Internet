@@ -10,6 +10,11 @@
     <ul id="topMenu" class="nav pull-right">
 	 <li class="">
 	 <a href="#login" role="button" data-toggle="modal" style="padding-right:0"><span class="btn btn-large btn-success">Login</span></a>
+	</li>
+	<li class="">
+	@if (Route::has('register'))
+	 <a href="{{ route('register') }}" role="button" style="padding-right:0"><span class="btn btn-large btn-success">Register</span></a>
+	@endif
 	<div id="login" class="modal hide fade in" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="false" >
 		  <div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -37,13 +42,10 @@
     <li class=""><a href="{{ url('invoice/list') }}">{{ Auth::user()->name }} Invoices</a></li>
     <li class=""><a href="{{ url('konfirmasi') }}">Konfirmasi Pembayaran</a></li>
     <li class=""><a href="{{ url('/') }}"> Hubungi Kami</a></li>
-
-	    <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();" role="button" data-toggle="modal" style="padding-right:0"><span class="btn btn-large btn-success">Logout</span></a>
-                                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
+	<li><a href="{{ route('logout') }}"onclick="event.preventDefault();document.getElementById('logout-form').submit();" data-toggle="modal" style="padding-right:0">Logout</a></li>
+	    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+			{{ csrf_field() }}
+		</form>
 	</ul>
     @endif
   </div>
