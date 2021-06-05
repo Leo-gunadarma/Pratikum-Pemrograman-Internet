@@ -9,7 +9,7 @@
 	<table class="table table-bordered" id="myTable">
 		<thead>
 			<tr>
-				<th>#</th>
+				<th>No</th>
 				<th>Nama Penerima</th>
 				<th>Alamat</th>
 				<th>Total Bayar</th>
@@ -30,7 +30,7 @@
 				<th>{{ $pesanan->id }}</th>
 				<td>
 					<center>
-						<button href="{{ url('/invoice/'.$pesanan->id) }}" class="btn btn-danger btn-hapus" id="delete"><i class="fa fa-trash-o"><span>Batalkan</span></i></button>
+						<a class="btn btn-danger" href="{{ url('/invoice/'.$pesanan->id) }}"  ><label><span>Batalkan</span></label></a>
 					</center>
 				</td>
 				<td><p>{{ $pesanan->status->nama }}</p></td>
@@ -38,7 +38,7 @@
 			@endforeach
 		</tbody>
 	</table>
-</div>.
+</div>
 
 <a href="{{ url('/') }}" class="btn btn-large"><i class="icon-arrow-left"></i> Kembali Berbelanja </a>
 
@@ -55,7 +55,7 @@
         	<thead>
         		<tr>
 	        		<th>
-	        			#
+	        			No
 	        		</th>
 	        		<th>
 	        			Nama Barang
@@ -132,7 +132,16 @@
 		});
 	});
 
+</script>
 
+<script>
+	$(document).ready(function(){
+            var flash = "{{ Session::has('pesan') }}";
+            if(flash){
+                var pesan = "{{ Session::get('pesan') }}";
+                swal('success', pesan, 'success');
+            }
+        });
 </script>
 
 @endsection
