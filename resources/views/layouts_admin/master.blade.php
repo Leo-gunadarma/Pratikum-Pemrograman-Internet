@@ -1,3 +1,6 @@
+@php
+$admin = Auth::guard('admin')->user();
+@endphp
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,7 +30,41 @@
 
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
-          
+          <li class="nav-item dropdown no-arrow mx-1" id="markasread" onclick="markAsRead()">
+                        <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-bell fa-fw"></i>
+                            <!-- Counter - Alerts -->
+                            <span class="badge badge-danger badge-counter"></span>
+                        </a>
+                        <!-- Dropdown - Alerts -->
+                        <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                            aria-labelledby="alertsDropdown">
+                            @forelse($admin->unreadNotifications as $notification)
+                            <a class="dropdown-item d-flex align-items-center" href="#">
+                                <div class="mr-3">
+                                    <div class="icon-circle bg-primary">
+                                        <i class="fas fa-file-alt text-white"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="small text-gray-1000">{{$notification->data}}</div>
+                                </div>
+                            </a>
+                            @empty
+                            <a class="dropdown-item d-flex align-items-center" href="#">
+                                <div class="mr-3">
+                                    <div class="icon-circle bg-primary">
+                                        <i class="fas fa-file-alt text-white"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="small text-gray-500">No Notif Here Now. AI Chan Have Been Waiting</div>
+                                </div>
+                            </a>
+                            @endforelse
+                        </div>
+                    </li>
         </ul>
       </div>
     </nav>

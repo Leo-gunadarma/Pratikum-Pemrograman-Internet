@@ -1,0 +1,3 @@
+function markAsRead(){
+	$.get('/adminMarkAsRead');
+}

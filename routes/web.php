@@ -158,4 +158,10 @@ Route::middleware('auth')->group(function(){
   Route::post('/konfirmasi/store', 'KonfirmasiController@store');
 
 });
+Route::get('/adminMarkAsRead', function(){
+  Auth::guard('admin')->user()->markAsRead();
+});
 
+Route::get('/userMarkAsRead', function(){
+  Auth::user()->markAsRead();
+});

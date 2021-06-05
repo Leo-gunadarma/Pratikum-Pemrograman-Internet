@@ -1,7 +1,7 @@
 <?php
 
     namespace App;
-
+    use App\admin_notification;
     use Illuminate\Notifications\Notifiable;
     use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -25,7 +25,16 @@
 
         public function unreadNotifications()
         {
-            return $this->morphMany(admin_notification::class, 'notifiable')->where('read_at',null)->orderBy('created_at', 'desc');
+            return $this->morphMany(admin_notification::class, 'notifiable')->where('read_at',NULL)->orderBy('created_at', 'desc');
+        }
+        public function markAsRead()
+        {
+            $listNotif = admin_notification::all()->where('read_at',NULL);
+            foreach($listNotif as $notifUnread)
+            {
+                $notifUnread->read_at = now();
+                $notifUnread->save();
+            }
         }
     }
 ?>
