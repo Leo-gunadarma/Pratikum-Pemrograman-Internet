@@ -41,7 +41,9 @@
 	</li>
     </ul>
     @else
-    <ul id="topMenu" class="nav pull-right">
+    <ul id="topMenu" style="width: 740px;" class="nav pull-right">
+
+    
 
     <li class=""><a href="{{ url('invoice/list') }}">{{ Auth::user()->name }} Invoices</a></li>
     <li class=""><a href="{{ url('konfirmasi') }}">Konfirmasi Pembayaran</a></li>
@@ -54,12 +56,5 @@
     @endif
   </div>
 
-<<<<<<< Updated upstream
-  </div>
 
-=======
->>>>>>> Stashed changes
-  <div class="alert alert-success">
-        <button type="button" class="close" data-dismiss="alert">×</button>
-        <strong>Well done!</strong> You successfully read this important alert message.
-      </div>
+  
