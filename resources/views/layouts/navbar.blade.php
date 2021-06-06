@@ -1,3 +1,6 @@
+@php
+$admin = Auth::user();
+@endphp
 <a id="smallScreen" data-target="#topMenu" data-toggle="collapse" class="btn btn-navbar">
 	<span class="icon-bar"></span>
 	<span class="icon-bar"></span>
@@ -53,13 +56,3 @@
 	</ul>
     @endif
   </div>
-
-<<<<<<< Updated upstream
-  </div>
-
-=======
->>>>>>> Stashed changes
-  <div class="alert alert-success">
-        <button type="button" class="close" data-dismiss="alert">×</button>
-        <strong>Well done!</strong> You successfully read this important alert message.
-      </div>

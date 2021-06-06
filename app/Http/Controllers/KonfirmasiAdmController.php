@@ -52,6 +52,7 @@ class KonfirmasiAdmController extends Controller
         $pesanan = Pesanan::where('id', $pesanan_id)->first();
         $pesanan->status_invoice_id = 3;
         $user = User::find($pesanan->users_id);
+        $pesanan->tanggal = date(now());
         $pesanan->save();
         $notif = "Pesanan dengan ID => $pesanan_id sudah diterima dan segera diproses";
         Notification::send($user, new userNotif($notif));
