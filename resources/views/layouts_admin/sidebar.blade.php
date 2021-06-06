@@ -43,6 +43,12 @@
             </li>
 
             <li>
+              <a href="{{ url('/report') }}">
+                <i class="fa fa-opera"></i> <span>Laporan Transaksi</span>
+              </a>
+            </li>
+
+            <li>
               <a href="{{ url('/logout') }}">
                 <i class="fa fa-adjust"></i> <span>Logout</span>
               </a>

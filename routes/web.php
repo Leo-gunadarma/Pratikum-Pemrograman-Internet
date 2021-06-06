@@ -65,7 +65,7 @@ Route::middleware('admin:admin')->group(function(){
   // ========================= LIST PESANAN =================================
   Route::get('/pesanan', 'PesananController@index');
 
-
+  Route::get('/report', 'reportController@index');
 
 //List Route yang digunakan untuk CRUD Admin
   Route::resource('/product','ControllerProduct');

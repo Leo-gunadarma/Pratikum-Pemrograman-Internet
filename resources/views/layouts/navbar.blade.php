@@ -1,3 +1,6 @@
+@php
+$admin = Auth::user();
+@endphp
 <a id="smallScreen" data-target="#topMenu" data-toggle="collapse" class="btn btn-navbar">
 	<span class="icon-bar"></span>
 	<span class="icon-bar"></span>
@@ -41,7 +44,7 @@
 	</li>
     </ul>
     @else
-    <ul id="topMenu" style="width: 740px;" class="nav pull-right">
+    <ul id="topMenu" style="width: 640px;" class="nav pull-right">
 
     
 
@@ -55,6 +58,3 @@
 	</ul>
     @endif
   </div>
-
-
-  
