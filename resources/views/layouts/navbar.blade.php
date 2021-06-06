@@ -5,6 +5,10 @@
 </a>
   <div class="navbar-inner">
     <a class="brand" href="{{url('/')}}"><img src="{{asset('bootshop/themes/images/PhoneShop.png')}}" alt="Bootsshop"/></a>
+
+
+
+    
 		
     @if(Auth::guest())
     <ul id="topMenu" class="nav pull-right">
@@ -50,8 +54,11 @@
     @endif
   </div>
 
+<<<<<<< Updated upstream
   </div>
 
+=======
+>>>>>>> Stashed changes
   <div class="alert alert-success">
         <button type="button" class="close" data-dismiss="alert">×</button>
         <strong>Well done!</strong> You successfully read this important alert message.

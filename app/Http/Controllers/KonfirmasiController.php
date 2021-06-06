@@ -46,6 +46,5 @@ class KonfirmasiController extends Controller
         Session::flash('pesan', 'Pesanan Anda segera diproses, Terimakasih telah melakukan pembayaran !');
         return redirect('invoice/list');
 
-
     }
 }

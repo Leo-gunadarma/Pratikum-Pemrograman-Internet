@@ -50,7 +50,11 @@
 			  		$gambar = \DB::table('base64')->where('product_id', $product->id)->value('nama');
 			  		$photo = base64_decode($gambar);
 			  	?>
+<<<<<<< Updated upstream
 					<a href="{{ url('product/detail/'.$product->id) }}"><img src="{{ asset('img/a8.jpeg' }}" alt=""></a>
+=======
+					<a href="{{ url('product/detail/'.$product->id) }}"><img src="{{ asset('img/a8.jpeg') }}" alt=""></a>
+>>>>>>> Stashed changes
 					<div class="caption">
 					  <h5>{{ $product->product_name }}</h5>
 					  <h4><a class="btn" href="{{ url('product/detail/'.$product->id) }}">VIEW</a> <span class="pull-right">Rp. {{ number_format($product->price, 0) }}</span></h4>
