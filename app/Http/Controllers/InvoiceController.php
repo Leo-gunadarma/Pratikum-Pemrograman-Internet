@@ -8,6 +8,7 @@ use Session;
 use Auth;
 
 use App\Pesanan;
+use App\Konfirmasi;
 use App\Pesanan_product;
 use App\Status_invoice;
 
@@ -54,7 +55,8 @@ class InvoiceController extends Controller
     public function delete($id)
     {
         Pesanan::find($id)->delete();
-        Session::flash('pesan', 'Pesanan Berhasil Dibatalkan !!!');
+        Konfirmasi::where('pesanan_id', $id)->delete();
+        Session::flash('pesan', 'Pesanan Anda Berhasil Dibatalkan !!!');
 
 
         return redirect()->back();
