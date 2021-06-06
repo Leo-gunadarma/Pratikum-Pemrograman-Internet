@@ -51,7 +51,7 @@
 			  		$photo = base64_decode($gambar);
 			  	?>
 <<<<<<< Updated upstream
-					<a href="{{ url('product/detail/'.$product->id) }}"><img src="{{ asset('img/a8.jpeg' }}" alt=""></a>
+					<a href="{{ url('product/detail/'.$product->id) }}"><img src="{{ asset('img/a8.jpeg') }}" alt=""></a>
 =======
 					<a href="{{ url('product/detail/'.$product->id) }}"><img src="{{ asset('img/a8.jpeg') }}" alt=""></a>
 >>>>>>> Stashed changes
