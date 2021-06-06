@@ -43,7 +43,7 @@ class KonfirmasiController extends Controller
         $pesanan->status_invoice_id = 2;
         $pesanan->save();
         Notification::send($admin, new adminNotif($notif));
-        Session::flash('pesan', 'Data berhasil di Input');
+        Session::flash('pesan', 'Pesanan Anda segera diproses, Terimakasih telah melakukan pembayaran !');
         return redirect('invoice/list');
 
 

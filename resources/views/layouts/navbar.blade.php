@@ -49,3 +49,10 @@
 	</ul>
     @endif
   </div>
+
+  </div>
+
+  <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <strong>Well done!</strong> You successfully read this important alert message.
+      </div>

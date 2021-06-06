@@ -14,7 +14,7 @@
             $category = \DB::table('product_categories')->where('id', $product->category_id)->value('category_name');
             $foto = \DB::table('product_images')->where('id', $product->product_images_id)->value('image_name');
         ?>
-        <a  href="{{ url('product/detail/'.$product->id) }}"><img style="height: 200px;" src="{{ asset('image/bridge bg.jpg') }}" alt=""/></a>
+        <a  href="{{ url('product/detail/'.$product->id) }}"><img style="height: 200px;" src="{{ asset('image/landscape.jpeg') }}" alt=""/></a>
         <div class="caption">
           <h5>{{ $product->product_name }}</h5>
           <p>

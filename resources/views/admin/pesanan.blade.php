@@ -27,7 +27,7 @@
                   <?php
                     $user = \DB::table('users')->where('id', $konfirmasi->users_id)->value('name');
                     $totalbayar = \DB::table('pesanan')->where('id', $konfirmasi->pesanan_id)->value('total_bayar');
-                    $tanggal = \DB::table('pesanan')->where('id', $konfirmasi->pesanan_id)->value('tanggal');
+                    $tanggal = \DB::table('pesanan')->where('id', $konfirmasi->pesanan_id)->value('created_at');
                     $statuss = \DB::table('pesanan')->where('id', $konfirmasi->pesanan_id)->value('status_invoice_id');
                   ?>
                   <td class="konfirmasi" pesanan-id="{{ $konfirmasi->pesanan_id }}" style="cursor: pointer; color: black;">{{ $user }}</td>
