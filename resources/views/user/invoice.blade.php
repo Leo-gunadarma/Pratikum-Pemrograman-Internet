@@ -26,8 +26,8 @@
 				<td class="penerima" style="cursor: pointer; color: blue;" pesanan-id="{{ $pesanan->id }}"><span>{{ $pesanan->nama_penerima }}</span></td>
 				<td>{{ $pesanan->alamat }}</td>
 				<td>Rp. {{ number_format($pesanan->total_bayar,0) }}</td>
-				<td>{{ $pesanan->tanggal }}</td>
-				<th>{{ $pesanan->id }}</th>
+				<td>{{ $pesanan->created_at }}</td>
+				<th><center>{{ $pesanan->id }}</center></th>
 				<td>
 					<center>
 						<a class="btn btn-danger" href="{{ url('/invoice/'.$pesanan->id) }}"  ><label><span>Batalkan</span></label></a>

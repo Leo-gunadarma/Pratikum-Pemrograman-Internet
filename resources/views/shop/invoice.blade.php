@@ -22,10 +22,6 @@
 		</tr>
 		@endforeach
 		<tr>
-			<th colspan="2">Pajak</th>
-			<th ">21 %</th>
-		</tr>
-		<tr>
 			<th colspan="2">Total</th>
 			<th style="background: lime;">Rp. {{ $total }}</th>
 		</tr>

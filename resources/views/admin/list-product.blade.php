@@ -50,6 +50,9 @@ active
                     <tr>
                         <th>No</th>
                         <th>Nama Product</th>
+                        <th>Harga</th>
+                        <th>Berat</th>
+                        <th>stock</th>
                         <th>Rate</th>
                         <th class="text-center">Aksi</th>
                     </tr>
@@ -59,6 +62,9 @@ active
                     <tr>
                         <td>{{$loop->iteration}}</td>
                         <td>{{$product->product_name}}</td>
+                        <td>Rp. {{number_format($product->price,0)}}</td>
+                        <td>{{$product->weight}} gram</td>
+                        <td>{{$product->stock}}</td>
                         <td>Ini Rate</td>
                         <td class="text-center">
                             <form action="/product/{{$product->id}}" method="POST">

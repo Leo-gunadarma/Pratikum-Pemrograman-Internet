@@ -60,6 +60,8 @@ class ControllerProduct extends Controller
         $products->description = $request->deskripsi_product;
         $products->stock = $request->stock_product;
         $products->weight = $request->berat_product;
+        $products->status_id = 11;
+        $products->status_id = 1;
         $products->created_at = Carbon::now()->format('Y-m-d H:i:s');
         $products->updated_at = Carbon::now()->format('Y-m-d H:i:s');
         $products->save();

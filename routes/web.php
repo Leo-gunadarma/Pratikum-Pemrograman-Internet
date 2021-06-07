@@ -34,6 +34,10 @@ Route::get('/shopping-cart/update/{id}', 'CartController@tambahkan');
 //Kurangi qty item di keranjang
 Route::get('/shopping-cart/kurangi/{id}', 'CartController@kurangi');
 
+Route::get('get-kota/{provinsi}', 'CartController@get_kota_ajax');
+
+Route::get('cek-ongkir/{asal}/{tujuan}/{kurir}/{berat}', 'CartController@get_ongkir');
+
 Auth::routes(['verify' => true, 'guest']);
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -99,6 +103,10 @@ Route::middleware('admin:admin')->group(function(){
   Route::resource('/courier','ControllerCourier');
   Route::get('/gambar/{id}','ControllerProduct@editGambar');
   Route::match(['put', 'patch'],'/gambar/{id}/update', 'ControllerProduct@updateGambar');
+
+  Route::get('alamat', 'AlamatController@index');
+  Route::get('alamat/get-kota/{id_provinsi}', 'AlamatController@get_kota_ajax');
+  Route::post('alamat', 'AlamatController@store');
   
 
   /*=================================Konfirmasi Pembayaran=================================*/

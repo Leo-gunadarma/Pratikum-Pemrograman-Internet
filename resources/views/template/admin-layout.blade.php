@@ -99,6 +99,13 @@ $admin = Auth::guard('admin')->user();
                     <i class="fas fa-book"></i>
                     <span>List Semua Pesanan</span></a>
             </li>
+
+            <li class="nav-item @yield('courier-active')">
+                <a class="nav-link" href="/alamat">
+                    <i class="fas fa-book"></i>
+                    <span>Set Alamat Toko</span></a>
+            </li>
+
             <li class="nav-item @yield('courier-active')">
                 <a class="nav-link" href="/report">
                     <i class="fas fa-book"></i>

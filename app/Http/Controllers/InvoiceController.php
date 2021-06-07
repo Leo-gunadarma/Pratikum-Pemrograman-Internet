@@ -17,7 +17,7 @@ class InvoiceController extends Controller
     public function index()
     {
     	$products = Cart::content();
-    	$total = Cart::total();
+    	$total = Cart::pricetotal();
     	// dd($barangs);
     	Cart::destroy();
     	$users_id = Auth::user()->id;
