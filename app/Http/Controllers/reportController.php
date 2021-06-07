@@ -20,4 +20,9 @@ class reportController extends Controller
     	*/
     	return view('admin.report', compact('report_graphic','report_graphic1'));
     }
+
+	public function dashboard()
+    {
+    	return view('admin.dashboard-admin');
+    }
 }

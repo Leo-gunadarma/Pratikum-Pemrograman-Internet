@@ -51,7 +51,7 @@ $admin = Auth::guard('admin')->user();
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item @yield('dashboard-avtive')">
-                <a class="nav-link" href="">
+                <a class="nav-link" href="/dashboard-admin">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>

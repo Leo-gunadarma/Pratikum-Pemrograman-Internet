@@ -56,7 +56,8 @@ Route::middleware('admin:admin')->group(function(){
     return redirect('/');
   });
 
-
+  Route::get('/dashboard-admin','reportController@dashboard');
+  
 // =============== KONFIRMASI PEMBAYARAN ===========================================================
   Route::get('/konfirmasi-admin', 'KonfirmasiAdmController@index');
   // Detail Konfirmasi
