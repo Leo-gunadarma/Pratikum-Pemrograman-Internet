@@ -5,11 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Session;
 use Auth;
-
+use App\Admin;
 use App\Product;
 use App\City;
 use App\Pesanan;
 use App\Pesanan_product;
+use App\Notifications\adminNotif;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
 
 use Cart;
 
@@ -183,9 +188,10 @@ class CartController extends Controller
     		$pesan_barang->subtotal = $cart->subtotal;
     		$pesan_barang->save();
     	}
-
+      $admin = Admin::all();
+      $notif = "Pesanan baru masuk! silahkan cek daftar pesanan";
+      Notification::send($admin, new adminNotif($notif));
     	// Cart::destroy();
-
     	return redirect('/invoice');
     }
 }
