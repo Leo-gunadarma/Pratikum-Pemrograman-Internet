@@ -28,13 +28,8 @@ class BerandaController extends Controller
     public function addToCart(Request $request, $id)
     {
     	$product = Product::find($id);
-    	Cart::add([
-            'id'=>$product->id,
-            'name'=>$product->product_name,
-            'qty'=>1,
-            'price'=>$product->price,
-            'options' => ['berat' =>$product->weight]
-        ]);
+        //$berat = $product->weight;
+    	Cart::add(['id'=>$product->id, 'name'=>$product->product_name, 'qty'=>1, 'price'=>$product->price, 'weight'=>$product->weight]);
         Session::flash('pesan', 'Barang berhasil di masukkan ke keranjang');
 
     	// $request->session()->put('cart', $cart);

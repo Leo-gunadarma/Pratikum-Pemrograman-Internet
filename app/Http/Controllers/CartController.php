@@ -7,7 +7,7 @@ use Session;
 use Auth;
 
 use App\Product;
-use App\Alamat;
+use App\City;
 use App\Pesanan;
 use App\Pesanan_product;
 
@@ -21,8 +21,8 @@ class CartController extends Controller
     	$products = Cart::content();
         $provinsi = $this->get_provinsi();
 
-        $alamat = Alamat::first();
-        $kota_asal = $alamat->kota;
+        $alamat = City::first();
+        $kota_asal = $alamat->city_name;
     	// dd($provinsi);
 
     	return view('shop.shopping_cart', compact('products', 'provinsi', 'kota_asal'));
