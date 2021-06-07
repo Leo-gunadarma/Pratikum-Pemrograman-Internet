@@ -35,7 +35,6 @@ class BerandaController extends Controller
             'price'=>$product->price,
             'options' => ['berat' =>$product->weight]
         ]);
-
         Session::flash('pesan', 'Barang berhasil di masukkan ke keranjang');
 
     	// $request->session()->put('cart', $cart);
