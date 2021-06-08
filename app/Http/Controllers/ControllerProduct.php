@@ -135,6 +135,9 @@ class ControllerProduct extends Controller
     public function update(Request $request, $id)
     {
         //Memperbarui data
+        if(Product::where('product_name',$request->nama_product)->exists()){
+            return redirect('/product')->with('gagal','Gagal memperbarui data, data barang sudah terdaftar');
+        }
         Product::where('id',$id)->update([
                     'product_name'=>$request->nama_barang,
                     'price'=>$request->harga_product,

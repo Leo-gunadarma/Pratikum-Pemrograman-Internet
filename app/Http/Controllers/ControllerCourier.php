@@ -84,6 +84,9 @@ class ControllerCourier extends Controller
     public function update(Request $request, $id)
     {
         //Mmeperbarui data
+        if(Courier::where('courier',$request->courier)->exists()){
+            return redirect('/courier')->with('gagal','Gagal menngubah data, data courier sudah terdaftar');
+        }
         Courier::where('id',$id)->update([
                     'courier'=>$request->courier,
                     'updated_at'=>Carbon::now()->format('Y-m-d H:i:s')

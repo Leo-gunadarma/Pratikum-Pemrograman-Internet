@@ -83,6 +83,9 @@ class ControllerProductCategory extends Controller
     public function update(Request $request, $id)
     {
         //Mmeperbarui data
+        if(ProductCategory::where('category_name',$request->nama_category)->exists()){
+            return redirect('/product-category')->with('gagal','Gagal memperbarui data, data kategori sudah terdaftar');
+        }
         ProductCategory::where('id',$id)->update([
                     'category_name'=>$request->nama_category,
                     'updated_at'=>Carbon::now()->format('Y-m-d H:i:s')
